@@ -1,9 +1,6 @@
-# Student credentials
+# Web shop app developed for course project using Django and React (no real transactions)
 
-Fredrik Holmnäs - 1801902
+To run: install requirements and run *manage.py runserver*
 
-fredrik.holmnas@abo.fi
-
-# Completed requirements
-
-All requirements except 15. are completed (The web page should look nice both on computer screen width>= 760px and phone width< 760px.)
+# Screenshot 
+![webs](https://user-images.githubusercontent.com/55537600/210782874-cd17a226-a767-4aa9-a1ca-754d45706986.png)
