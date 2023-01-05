@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing page</title>
+    <script type = "text/javascript">
+        function helloworld() {
+            alert("Hello");
+            return;
+        }
+    </script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+        body {
+          margin: 0px;
+          padding: 0px;
+          background-color: #161a1d;
+        }
+
+        .App {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .window {
+          background-color: #2b3236;
+          height: auto;
+          width: 800px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          padding: 20px;
+          padding-top: 0px;
+        }
+
+        .window--info,
+        .window--shop,
+        .window--repopulate {
+          background-color: #575f64;
+          width: 100%;
+          height: 200px;
+          margin-top: 20px;
+          border-radius: 10px;
+          color: black;
+          padding: 10px;
+        }
+
+        .window > div > p {
+          margin: 0px;
+        }
+
+        .window > div > h3 {
+          margin: 0px;
+          margin-bottom: 10px;
+        }
+
+        .buttoncontainer {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+        }
+
+        button {
+          height: 40px;
+          border: 2px solid #e5383b;
+          border-radius: 10px;
+          background-color: #161a1d;
+          color: #ffffff;
+        }
+
+        button:hover {
+          cursor: pointer;
+          opacity: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="App">
+      <div class="window">
+        <div class="window--info">
+          <h3>Website information</h3>
+          <p>There are currently {{ itemCount }} items in the webshop! (For sale and sold)</p>
+        </div>
+        <div class="window--repopulate">
+          <h3>Repopulate database</h3>
+            {% if not repopulated %}
+              <p>
+                Press the button below to empty the database and generate 6 new
+                registered users whereof 3 have 10 items for sale each.
+              </p>
+              <div class="buttoncontainer">
+                  <form method="post" action="{% url 'landing'%}">
+                  {% csrf_token %}
+                    <button class="button--repopulate ">Repopulate database</button>
+                  </form>
+              </div>
+            {% endif %}
+            {% if repopulated %}
+                <p>
+                    Database has been repopulated with 6 new registered users whereof 3 have 10 items for sale each!
+                </p>
+            {% endif %}
+
+        </div>
+        <div class="window--shop">
+          <h3>Enter shop</h3>
+          <p>
+            By proceeding to the webshop you accept the terms and conditions.
+          </p>
+          <div class="buttoncontainer">
+            <button class="button--shop" onclick="location.href = {% url 'shop'%}">Enter shop</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
